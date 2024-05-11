@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/Projet_JSP_SERVLET"/>
+<Context antiResourceLocking="false" privileged="true" >
+    <!-- Configurer la ressource de la base de données -->
+    <Resource name="jdbc/gestionprojets" auth="Container"
+              type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:9088/gestionprojets?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"
+              username="localhost" password=""
+              maxActive="100" maxIdle="20" minIdle="5" maxWait="10000"/>
+</Context>

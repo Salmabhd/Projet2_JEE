@@ -1,6 +1,7 @@
-package Projets;
+package Controller;
 
-import Projets.*;
+import Model.Projet;
+import DAO.ProjetDbUtil;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,7 +19,7 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class StudentControllerServlet
  */
-@WebServlet("/StudentControllerServlet")
+@WebServlet("/ProjetControllerServlet")
 public class ProjetControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiResourceLocking="false" privileged="true" >
-    <!-- Configurer la ressource de la base de données -->
-    <Resource name="jdbc/gestionprojets" auth="Container"
-              type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
-              url="jdbc:mysql://localhost:9088/gestionprojets?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"
-              username="localhost" password=""
-              maxActive="100" maxIdle="20" minIdle="5" maxWait="10000"/>
+<Context antiResourceLocking="false" path="/Projet_JSP_SERVLET" privileged="true">
+  <!-- Configurer la ressource de la base de données -->
+  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" 
+            maxActive="100" maxIdle="20" maxWait="10000" minIdle="5" 
+            name="jdbc/gestionprojets" password="" type="javax.sql.DataSource" 
+            url="jdbc:mysql://localhost:9088/gestionprojets?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC" 
+            username="localhost"/>
 </Context>

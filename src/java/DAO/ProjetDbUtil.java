@@ -1,6 +1,6 @@
-package Projets;
+package DAO;
 
-import Projets.*;
+import Model.Projet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,61 +1,42 @@
-<%@ page import="java.util.*, Projets.*" %>
+<%@page import="Model.Projet"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Gestion des projets</title>	
+<meta charset="UTF-8">
+<title>Liste des Projets</title>
 </head>
-
-<%
-	// get the students from the request object (sent by servlet)
-	List<Projet> projets = 
-					(List<Projet>) request.getAttribute("Projets_LIST");
-%>
-
 <body>
 
-	<div id="wrapper">
-		<div id="header">
-			<h2>FooBar University</h2>
-		</div>
-	</div>
+<h2>Liste des Projets</h2>
 
-	<div id="container">
-	
-		<div id="content">
-		
-			<table>
-			
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-				</tr>
-				
-				<% for (Projet tempProjet : projets) { %>
-				
-					<tr>
-						<td> <%= tempProjet.getProject_name() %> </td>
-						<td> <%= tempProjet.getDateDebut() %> </td>
-						<td> <%= tempProjet.getDateFin() %> </td>
-					</tr>
-				
-				<% } %>
-				
-			</table>
-		
-		</div>
-	
-	</div>
+<table border="1">
+    <tr>
+        <th>ID Projet</th>
+        <th>Nom Projet</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Membres de l'Équipe</th>
+        <th>État</th>
+        <th>ID du Responsable</th>
+    </tr>
+    
+    <% for (Projet projet : (List<Projet>) request.getAttribute("PROJET_LIST")) { %>
+        <tr>
+            <td><%= projet.getProjet_id() %></td>
+            <td><%= projet.getProject_name() %></td>
+            <td><%= projet.getDateDebut() %></td>
+            <td><%= projet.getDateFin() %></td>
+            <td><%= projet.getMembresEquipe() %></td>
+            <td><%= projet.getEtat() %></td>
+            <td><%= projet.getProject_manager_id() %></td>
+        </tr>
+    <% } %>
+</table>
+
 </body>
-
-
 </html>
-
-
-
-
-
-
-
-

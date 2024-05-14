@@ -2,106 +2,106 @@ package DAO;
 
 import Model.Projet;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-
-import javax.sql.DataSource;
-
 public class ProjetDbUtil {
 
-	private DataSource dataSource;
+    private static final String JDBC_URL = "jdbc:mysql://localhost:9090/gestionprojets";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
 
-	public ProjetDbUtil(DataSource theDataSource) {
-		dataSource = theDataSource;
-	}
-	
-	public List<Projet> getProjets() throws Exception {
-		
-		List<Projet> projets = new ArrayList<>();
-		
-		Connection myConn = null;
-		Statement myStmt = null;
-		ResultSet myRs = null;
-		
-		try {
-			// get a connection
-			myConn = dataSource.getConnection();
-			
-			// create sql statement
-			String sql = "select * from projets ";
-			
-			myStmt = myConn.createStatement();
-			
-			// execute query
-			myRs = myStmt.executeQuery(sql);
-			
-			// process result set
-			while (myRs.next()) {
-				
-				// retrieve data from result set row
-				int projet_id = myRs.getInt("projet_id");
-				String project_name = myRs.getString("project_name");
-				Date DateDebut = myRs.getDate("DateDebut");
-				Date DateFin = myRs.getDate("DateFin");
-                                String MembresEquipe = myRs.getString("MembresEquipe");
-                                String etat = myRs.getString("etat");
-				int project_manager_id = myRs.getInt("project_manager_id");
+    public List<Projet> getProjets() throws SQLException {
+
+        List<Projet> projets = new ArrayList<>();
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet Rs ;
+
+        try {
+            // Établir la connexion
+            myConn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             
+            // Créer la requête SQL
+            String sql = "SELECT * FROM projets";
+            myStmt = myConn.createStatement();
+
+            // Exécuter la requête
+            Rs = myStmt.executeQuery(sql);
+
+            // Traiter le résultat
+            while (Rs.next()) {
+                int projet_id = Rs.getInt("projet_id");
+                String project_name = Rs.getString("project_name");
+                Date DateDebut = Rs.getDate("DateDebut");
+                Date DateFin = Rs.getDate("DateFin");
+                String MembresEquipe = Rs.getString("MembresEquipe");
+                String etat = Rs.getString("etat");
+                int project_manager_id = Rs.getInt("project_manager_id");
+
+                Projet tempProjet = new Projet(projet_id, project_name, DateDebut, DateFin, MembresEquipe, etat, project_manager_id);
+
+                projets.add(tempProjet);
+            }
+
+            return projets;
+        } finally {
+            // Fermer les ressources JDBC
+            myConn.close();
+            //close(myConn, myStmt, Rs);
+        }
+    }
+        public void addProjet(Projet projet) throws SQLException {
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+
+        try {
+            // Établir la connexion
+            myConn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+
+            // Créer la requête SQL
+            String sql = "INSERT INTO projets (project_name, DateDebut, DateFin, MembresEquipe, etat, project_manager_id) "
+                         + "VALUES (?, ?, ?, ?, ?, ?)";
+            myStmt = myConn.prepareStatement(sql);
+
+            // Définir les paramètres
+            myStmt.setString(1, projet.getProject_name());
+            myStmt.setDate(2, projet.getDateDebut());
+            myStmt.setDate(3, projet.getDateFin());
+            myStmt.setString(4, projet.getMembresEquipe());
+            myStmt.setString(5, projet.getEtat());
+            myStmt.setInt(6, projet.getProject_manager_id());
+
+            // Exécuter la requête
+            myStmt.executeUpdate();
+        } finally {
+            // Fermer les ressources JDBC
+            close(myConn, myStmt, null);
+        }
+    }
 
 
-				
-				// create new student object
-				Projet tempProjet = new Projet(projet_id, project_name, DateDebut,DateFin,MembresEquipe,etat,project_manager_id);
-				
-				// add it to the list of students
-				projets.add(tempProjet);				
-			}
-			
-			return projets;		
-		}
-		finally {
-			// close JDBC objects
-			close(myConn, myStmt, myRs);
-		}		
-	}
+    private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+        try {
+            if (myRs != null) {
+                myRs.close();
+            }
 
-	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+            if (myStmt != null) {
+                myStmt.close();
+            }
 
-		try {
-			if (myRs != null) {
-				myRs.close();
-			}
-			
-			if (myStmt != null) {
-				myStmt.close();
-			}
-			
-			if (myConn != null) {
-				myConn.close();   // doesn't really close it ... just puts back in connection pool
-			}
-		}
-		catch (Exception exc) {
-			exc.printStackTrace();
-		}
-	}
-
+            if (myConn != null) {
+                myConn.close();
+            }
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

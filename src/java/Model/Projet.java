@@ -23,6 +23,10 @@ public class Projet {
         this.project_manager_id = project_manager_id;
     }
 
+    public Projet(String projectName, String dateDebut, String dateFin, String membresEquipe, String etat, int projectManagerId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Getters
     public int getProjet_id() {
         return projet_id;

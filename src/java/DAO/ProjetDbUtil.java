@@ -12,7 +12,7 @@ import java.util.List;
 import java.sql.Date;
 
 public class ProjetDbUtil {
-
+   Projet projet;
     private static final String JDBC_URL = "jdbc:mysql://localhost:9090/gestionprojets";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
@@ -85,7 +85,7 @@ public class ProjetDbUtil {
             close(myConn, myStmt, null);
         }
     }
-
+        
 
     private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
         try {
@@ -104,4 +104,48 @@ public class ProjetDbUtil {
             exc.printStackTrace();
         }
     }
+     
+    
+    
+    
+    
+    
+    
+    
+     public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection("jdbc:mysql://localhost:9090/gestionprojets", "root", "");
+    }
+
+    public boolean save(Projet projet) {
+     String sql = "INSERT INTO projets (project_name, DateDebut, DateFin, MembresEquipe, etat, project_manager_id) "
+                         + "VALUES (?, ?, ?, ?, ?, ?)";
+     try (Connection conn = getConnection();
+             PreparedStatement myStmt = conn.prepareStatement(sql)) {
+            myStmt.setString(1, projet.getProject_name());
+            myStmt.setDate(2, projet.getDateDebut());
+            myStmt.setDate(3, projet.getDateFin());
+            myStmt.setString(4, projet.getMembresEquipe());
+            myStmt.setString(5, projet.getEtat());
+            myStmt.setInt(6, projet.getProject_manager_id());
+
+            int rowsInserted = myStmt.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

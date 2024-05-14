@@ -1,6 +1,10 @@
 package Model;
 
+import com.mysql.jdbc.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Projet {
 	private int projet_id;
@@ -11,7 +15,7 @@ public class Projet {
         private String etat;
         private int project_manager_id;
 
-
+       public Projet(){}
    
 	public Projet(int projet_id, String project_name, Date DateDebut, Date DateFin, String MembresEquipe, String etat, int project_manager_id) {
         this.projet_id = projet_id;
@@ -85,6 +89,9 @@ public class Projet {
         this.project_manager_id = project_manager_id;
     }
 
+    
+    
+    
  @Override
     public String toString() {
         return "Projet{" +
@@ -97,4 +104,40 @@ public class Projet {
                 ", project_manager_id=" + project_manager_id +
                 '}';
     }	
+     public static java.sql.Connection getConnection() throws SQLException {
+        return DriverManager.getConnection("jdbc:mysql://localhost:9090/gestionprojets", "root", "");
+    }
+
+    public boolean save() {
+     String sql = "INSERT INTO projets (project_name, DateDebut, DateFin, MembresEquipe, etat, project_manager_id) "
+                         + "VALUES (?, ?, ?, ?, ?, ?)";
+     try (java.sql.Connection conn = getConnection();
+             PreparedStatement myStmt = conn.prepareStatement(sql)) {
+            myStmt.setString(1, this.getProject_name());
+            myStmt.setDate(2, this.getDateDebut());
+            myStmt.setDate(3, this.getDateFin());
+            myStmt.setString(4, this.getMembresEquipe());
+            myStmt.setString(5, this.getEtat());
+            myStmt.setInt(6, this.getProject_manager_id());
+
+            int rowsInserted = myStmt.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+      
+    }
+
+    public void setDateDebut(String date_debut) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setDateFin(String date_fin) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setProject_manager_id(String project_manager_id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

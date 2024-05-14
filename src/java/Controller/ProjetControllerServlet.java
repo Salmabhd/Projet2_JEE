@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class StudentControllerServlet
  */
-@WebServlet("/ProjetControllerServlet")
+@WebServlet("/Controller/ProjetControllerServlet")
 public class ProjetControllerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

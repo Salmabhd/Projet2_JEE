@@ -1,41 +1,101 @@
-<%@ page language="java"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page  %>
-
-<!DOCTYPE html>
+<%@page import="java.sql.*" %> 
+<% Class.forName("com.mysql.jdbc.Driver"); %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Créer un Projet</title>
-</head>
-<body>
-
-<h2>Créer un Projet</h2>
-
+    <head>
+        <link rel="stylesheet" href="css/ajouterProjet.css">
+    </head>
+    <body>
+        <div class="formbold-main-wrapper">
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+  <div class="formbold-form-wrapper">
 <form action="<%= request.getContextPath() %>/AjoutProjet" method="post">
-    <label for="project_name">Nom du Projet:</label>
-    <input type="text" id="project_name" name="project_name" required><br><br>
+    <center><!-- comment -->
+    <label class="formbold-form-label formbold-form-label-2">
+            <h4> Creer un nouveau projet<!-- comment --></h4>
+      </label></center>
     
-    <label for="date_debut">Date de Début:</label>
-    <input type="date" id="date_debut" name="date_debut" required><br><br>
+      <div class="formbold-mb-5">
+        <label for="nom" class="formbold-form-label">Nom du Projet: </label>
+        <input
+          type="text"
+          name="project_name"
+          id="project_name"
+          placeholder="Entrez le nom du projet"
+          class="formbold-form-input"
+        />
+      </div>
+     <div class="flex flex-wrap formbold--mx-3">
+        <div class="w-full sm:w-half formbold-px-3">
+          <div class="formbold-mb-5 w-full">
+            <label for="dateD" class="formbold-form-label"> Date de Debut: </label>
+            <input
+              type="date"
+              name="date_debut"
+              id="date_debut"
+              class="formbold-form-input"
+            />
+          </div>
+        </div>
+        <div class="w-full sm:w-half formbold-px-3">
+          <div class="formbold-mb-5">
+            <label for="dateF" class="formbold-form-label"> Date de Fin: </label>
+            <input
+              type="date"
+              name="date_fin"
+              id="date_fin"
+              class="formbold-form-input"
+            />
+          </div>
+        </div>
+      </div>
     
-    <label for="date_fin">Date de Fin:</label>
-    <input type="date" id="date_fin" name="date_fin" required><br><br>
+      <div class="formbold-mb-5">
+        <label for="membres_equipe" class="formbold-form-label"> Membres de l'Equipe: </label>
+        <input
+          type="text"
+          name="membres_equipe"
+          id="membres_equipe"
+          placeholder="Entez les membres d'equipe du projet"
+          class="formbold-form-input"
+        />
+      </div>
     
-    <label for="membres_equipe">Membres de l'Équipe:</label>
-    <input type="text" id="membres_equipe" name="membres_equipe"><br><br>
-    
-    <label for="etat">État:</label>
-    <select id="etat" name="etat" required>
+     <div class="flex flex-wrap formbold--mx-3">
+        <div class="w-full sm:w-half formbold-px-3">
+          <div class="formbold-mb-5 w-full">
+            <label for="etat" class="formbold-form-label"> Etat: </label>
+            <select id="etat" name="etat" required>
         <option value="En cours">En cours</option>
         <option value="Terminé">Terminé</option>
         <option value="En attente">En attente</option>
-    </select><br><br>
+    </select>
+          </div>
+        </div>
+        <div class="w-full sm:w-half formbold-px-3">
+          <div class="formbold-mb-5">
+            <label for="project_manager_id" class="formbold-form-label"> ID chef du projet: </label>
+            <input
+              type="number"
+              name="project_manager_id"
+              id="project_manager_id"
+              class="formbold-form-input"
+            />
+          </div>
+        </div>
+      </div>
     
-    <label for="project_manager_id">ID du Responsable:</label>
-    <input type="text" id="project_manager_id" name="project_manager_id" required><br><br>
     
-    <input type="submit" value="Créer">
-</form>
+    
+     
 
-</body>
+      <div>
+        <button class="formbold-btn">Ajouter le projet</button>
+      </div>
+    </form>
+  </div>
+</div>
+       
+</body><!-- comment -->
 </html>

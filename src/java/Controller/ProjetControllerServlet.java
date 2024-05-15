@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Projet;
-import DAO.ProjetDbUtil;
+import DAO.ProjetDAO;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ProjetControllerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private ProjetDbUtil projetDbUtil;
+    private ProjetDAO projetDbUtil;
 
     @Override
     public void init() throws ServletException {
@@ -29,7 +29,7 @@ public class ProjetControllerServlet extends HttpServlet {
 
         // create our projet db util
         try {
-            projetDbUtil = new ProjetDbUtil();
+            projetDbUtil = new ProjetDAO();
         } catch (Exception exc) {
             throw new ServletException(exc);
         }

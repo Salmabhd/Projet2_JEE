@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
-    private String jdbcURL = "jdbc:MySQL://localhost:3306/gestionprojets";
+    private String jdbcURL = "jdbc:MySQL://localhost:3306/gestion";
     private String jdbcUsername = "root";
     private String jdbcPassword = "";
 
@@ -17,9 +17,9 @@ public class UserDao {
     public UserDao() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("connection succes");
+         System.out.println("Connexion à la base de données établie avec succès.");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+             System.out.println("Erreur lors de la connexion à la base de données : " + e.getMessage());;
         }
     }
 

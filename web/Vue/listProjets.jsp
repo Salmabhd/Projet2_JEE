@@ -37,6 +37,8 @@
         </tr>
     </c:forEach>
 </table>
-
+<form method="post" action="ajoutlist.jsp">
+    <button type="submit">Ajouter un Projet</button>
+</form>
 </body>
 </html>

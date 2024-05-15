@@ -2,7 +2,6 @@ package Controller;
 
 import DAO.UserDao;
 import Model.User;
-import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginController {
     private UserDao userDao;
@@ -11,8 +10,8 @@ public class LoginController {
         userDao = new UserDao();
     }
 
-    public boolean authenticate(String username, String password) {
-        User user = userDao.getUserByUsername(username);
-        return user != null && BCrypt.checkpw(password, user.getPassword());
+    public boolean authenticate(String email, String password) {
+        User user = userDao.getUserByUsername(email);
+        return user != null && password.equals(user.getPassword());
     }
 }

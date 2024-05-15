@@ -105,7 +105,7 @@ public class Projet {
                 '}';
     }	
      public static java.sql.Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:9090/gestionprojets", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionprojets", "root", "");
     }
 
     public boolean save() {
@@ -129,9 +129,7 @@ public class Projet {
       
     }
 
-    public void setDateDebut(String date_debut) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 
     public void setDateFin(String date_fin) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

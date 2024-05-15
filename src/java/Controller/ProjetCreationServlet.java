@@ -2,7 +2,10 @@ package Controller;
 
 import Model.Projet;
 import DAO.ProjetDbUtil;
+import com.mysql.jdbc.Connection;
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,10 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Controller/ProjetCreationServlet")
+@WebServlet("/AjoutProjet")
 public class ProjetCreationServlet extends HttpServlet { 
     private static final long serialVersionUID = 1L;
     private ProjetDbUtil projetDbUtil;
+    Connection myConn;
+    PreparedStatement myStmt ;
+Projet projet;
 
     @Override
     public void init() throws ServletException {
@@ -33,7 +39,7 @@ public class ProjetCreationServlet extends HttpServlet {
         }
     }
 
-    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             // process the form data
             String projectName = request.getParameter("project_name");
@@ -47,24 +53,42 @@ public class ProjetCreationServlet extends HttpServlet {
             Projet newProjet = new Projet(projectName, dateDebut, dateFin, membresEquipe, etat, projectManagerId);
 
             // add the Projet to the database
-            projetDbUtil.addProjet(newProjet);
+            //projetDbUtil.addProjet(newProjet);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            myConn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion", "root", "");
 
-            // send back to the main page (redirect)
-            response.sendRedirect(request.getContextPath() + "/ProjetControllerServlet");
+            // Créer la requête SQL
+            String sql = "INSERT INTO projets (project_name, DateDebut, DateFin, MembresEquipe, etat) "
+                         + "VALUES (?, ?, ?, ?, ?)";
+            myStmt = myConn.prepareStatement(sql);
+
+            // Définir les paramètres
+            myStmt.setString(1, newProjet.getProject_name());
+            myStmt.setDate(2, newProjet.getDateDebut());
+            myStmt.setDate(3, newProjet.getDateFin());
+            myStmt.setString(4, newProjet.getMembresEquipe());
+            myStmt.setString(5, newProjet.getEtat());
+            //myStmt.setInt(6, newProjet.getProject_manager_id());
+
+            // Exécuter la requête
+            myStmt.executeUpdate();
+             
+            // send back to the main page (redirect) request.getContextPath() + "/ProjetControllerServlet"
+          response.sendRedirect(request.getContextPath() + "/listProjet.jsp");
             
         } catch (Exception ex) {
             Logger.getLogger(ProjetCreationServlet.class.getName()).log(Level.SEVERE, null, ex);
             // You may want to handle the exception differently, for example, by displaying an error message to the user.
             // For simplicity, we'll just forward to an error page for now.
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-            dispatcher.forward(request, response);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+//            dispatcher.forward(request, response);
         }
-    }*/
+    }
     
     
     
     
-    static {
+    /* static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -102,7 +126,7 @@ public class ProjetCreationServlet extends HttpServlet {
             request.setAttribute("message", "Failed to insert the appointment.");
         }
         request.getRequestDispatcher("/AjoutProjet.jsp").forward(request, response);
-    }
+    }*/
 }
     
     

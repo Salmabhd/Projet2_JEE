@@ -11,7 +11,7 @@
 
 <h2>Créer un Projet</h2>
 
-<form action="/Controller/ProjetCreationServlet" method="post">
+<form action="<%= request.getContextPath() %>/AjoutProjet" method="post">
     <label for="project_name">Nom du Projet:</label>
     <input type="text" id="project_name" name="project_name" required><br><br>
     

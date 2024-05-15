@@ -1,0 +1,20 @@
+<!-- src/main/webapp/WEB-INF/web.xml -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="4.0">
+    <servlet>
+        <servlet-name>ProjetCreationServlet</servlet-name>
+        <servlet-class>Controller.ProjetCreationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjetCreationServlet</servlet-name>
+        <url-pattern>Vue/AjoutProjet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+<servlet-name>LoginServlet</servlet-name>
+<servlet-class>web.LoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>LoginServlet</servlet-name>
+<url-pattern>Vue/login</url-pattern>
+</servlet-mapping>
+</web-app>
+

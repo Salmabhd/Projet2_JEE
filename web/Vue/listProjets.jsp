@@ -25,17 +25,17 @@
         <th>ID du Responsable</th>
     </tr>
     
-    <% for (Projet projet : (List<Projet>) request.getAttribute("PROJET_LIST")) { %>
+    <c:forEach items="${PROJET_LIST}" var="projet">
         <tr>
-            <td><%= projet.getProjet_id() %></td>
-            <td><%= projet.getProject_name() %></td>
-            <td><%= projet.getDateDebut() %></td>
-            <td><%= projet.getDateFin() %></td>
-            <td><%= projet.getMembresEquipe() %></td>
-            <td><%= projet.getEtat() %></td>
-            <td><%= projet.getProject_manager_id() %></td>
+            <td>${projet.projet_id}</td>
+            <td>${projet.project_name}</td>
+            <td>${projet.DateDebut}</td>
+            <td>${projet.DateFin}</td>
+            <td>${projet.MembresEquipe}</td>
+            <td>${projet.etat}</td>
+            <td>${projet.project_manager_id}</td>
         </tr>
-    <% } %>
+    </c:forEach>
 </table>
 
 </body>

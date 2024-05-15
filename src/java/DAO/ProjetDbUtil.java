@@ -13,7 +13,7 @@ import java.sql.Date;
 
 public class ProjetDbUtil {
    Projet projet;
-    private static final String JDBC_URL = "jdbc:mysql://localhost:9090/gestionprojets";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gestionprojets";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 
@@ -57,12 +57,13 @@ public class ProjetDbUtil {
             //close(myConn, myStmt, Rs);
         }
     }
-        public void addProjet(Projet projet) throws SQLException {
+        public void addProjet(Projet projet) throws SQLException, ClassNotFoundException {
         Connection myConn = null;
         PreparedStatement myStmt = null;
 
         try {
             // Établir la connexion
+            Class.forName("com.mysql.cj.jdbc.Driver");
             myConn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
             // Créer la requête SQL

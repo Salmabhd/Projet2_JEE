@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class StudentControllerServlet
  */
-@WebServlet("/Controller/ProjetControllerServlet")
+@WebServlet("/ProjetControllerServlet")
 public class ProjetControllerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -56,7 +56,7 @@ public class ProjetControllerServlet extends HttpServlet {
          request.setAttribute("PROJET_LIST", projets);
 
         // send to JSP page (view)
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/listProjets.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listProjets.jsp");
         dispatcher.forward(request, response);
     }
 

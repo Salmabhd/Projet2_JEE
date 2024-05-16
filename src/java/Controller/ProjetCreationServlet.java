@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AjoutProjet")
 public class ProjetCreationServlet extends HttpServlet { 
     private static final long serialVersionUID = 1L;
-    private ProjetDAO projetDbUtil;
+    private ProjetDAO projetDAO;
     Connection myConn;
     PreparedStatement myStmt ;
 Projet projet;
@@ -33,7 +33,7 @@ Projet projet;
 
         // create our projet db util
         try {
-            projetDbUtil = new ProjetDAO();
+            projetDAO = new ProjetDAO();
         } catch (Exception exc) {
             throw new ServletException(exc);
         }
@@ -53,7 +53,7 @@ Projet projet;
             Projet newProjet = new Projet(projectName, dateDebut, dateFin, membresEquipe, etat, projectManagerId);
 
             // add the Projet to the database
-            projetDbUtil.addProjet(newProjet);
+            projetDAO.addProjet(newProjet);
         
             // send back to the main page (redirect) request.getContextPath() + "/ProjetControllerServlet"
           response.sendRedirect(request.getContextPath() + "/listProjet.jsp");

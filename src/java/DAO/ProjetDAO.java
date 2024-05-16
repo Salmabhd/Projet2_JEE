@@ -136,7 +136,32 @@ public class ProjetDAO {
         close(myConn, myStmt, null);
     }
 }
-      
+      public void deleteProjet(int projetId) throws SQLException {
+    Connection myConn = null;
+    PreparedStatement myStmt = null;
+
+    try {
+        // Établir la connexion
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        myConn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+
+        // Créer la requête SQL
+        String sql = "DELETE FROM projets WHERE projet_id=?";
+
+        myStmt = myConn.prepareStatement(sql);
+
+        // Définir le paramètre
+        myStmt.setInt(1, projetId);
+
+        // Exécuter la requête
+        myStmt.executeUpdate();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    } finally {
+        // Fermer les ressources JDBC
+        close(myConn, myStmt, null);
+    }
+}
 
     public Projet getProjetById(int id) throws SQLException {
         Connection conn = null;

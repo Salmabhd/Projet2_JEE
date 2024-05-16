@@ -114,10 +114,12 @@
             <td>${projet.etat}</td>
             <td>${projet.project_manager_id}</td>
             <td>
-            <!-- Bouton Modifier -->
-            <button onclick="modifierProjet(${projet.projet_id})" class="btn btn-primary">Modifier</button>
-            <!-- Bouton Supprimer -->
-            <button onclick="supprimerProjet(${projet.projet_id})" class="btn btn-danger">Supprimer</button>
+            <td>
+            <form method="post" action="ProjetControllerServlet">
+                <input type="hidden" name="projet_id" value="${projet.projet_id}" />
+                <button type="submit" name="action" value="modifier" class="btn btn-primary">Modifier</button>
+                <button type="submit" name="action" value="supprimer" class="btn btn-danger">Supprimer</button>
+            </form>
             </td>
             </tr>
     </c:forEach>

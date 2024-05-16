@@ -136,14 +136,15 @@ public class ProjetDAO {
         close(myConn, myStmt, null);
     }
 }
-      public void deleteProjet(int projetId) throws SQLException {
+    
+    public void supprimerProjet(int projetId) throws SQLException {
     Connection myConn = null;
     PreparedStatement myStmt = null;
 
     try {
         // Établir la connexion
         Class.forName("com.mysql.cj.jdbc.Driver");
-        myConn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+        myConn = DriverManager.getConnection("jdbc:mysql://localhost/gestionprojets", "root", "");
 
         // Créer la requête SQL
         String sql = "DELETE FROM projets WHERE projet_id=?";
@@ -155,13 +156,17 @@ public class ProjetDAO {
 
         // Exécuter la requête
         myStmt.executeUpdate();
-    } catch (ClassNotFoundException e) {
+    } catch (ClassNotFoundException | SQLException e) {
         e.printStackTrace();
     } finally {
         // Fermer les ressources JDBC
         close(myConn, myStmt, null);
     }
 }
+
+      
+      
+      
 
     public Projet getProjetById(int id) throws SQLException {
         Connection conn = null;

@@ -59,5 +59,32 @@ public class ProjetControllerServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("listProjets.jsp");
         dispatcher.forward(request, response);
     }
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String action = request.getParameter("action");
+
+    try {
+        switch (action) {
+            case "supprimer":
+                supprimerProjet(request, response);
+                break;
+            default:
+                listProjets(request, response);
+                break;
+        }
+    } catch (Exception ex) {
+        Logger.getLogger(ProjetControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
+private void supprimerProjet(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    // Récupérer l'identifiant du projet à supprimer
+    int projetId = Integer.parseInt(request.getParameter("projet_id"));
+
+    // Appeler la méthode de suppression dans le DAO
+    projetDbUtil.supprimerProjet(projetId);
+
+    // Rediriger vers la page de liste des projets après la suppression
+    response.sendRedirect(request.getContextPath() + "/ProjetControllerServlet");
+}
 
 }

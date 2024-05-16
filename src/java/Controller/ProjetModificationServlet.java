@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ProjetModificationServlet", urlPatterns = {"/modifierProjet"})
+@WebServlet("/modifierProjet")
 public class ProjetModificationServlet extends HttpServlet {
         private ProjetDAO projetDao;
 

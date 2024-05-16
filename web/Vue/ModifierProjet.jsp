@@ -25,7 +25,7 @@
       </label></center>
     
         <div class="formbold-mb-5">
-        <label for="nom" class="formbold-form-label">Nom du Projet: </label>
+        <label for="nom" class="formbold-form-label">ID du Projet: </label>
          <input type="text" name="projet_id" value="<%= projet.getProjet_id() %>">
       </div>
         

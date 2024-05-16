@@ -131,59 +131,7 @@
 	</section>
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-	<!-- About Section-->
-	<section class="page-section bg-primary text-white mb-0" id="about">
-		<div class="container">
-			<!-- About Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-white">Ajouter un projet</h2>
-			<!-- Icon Divider-->
-			<div class="divider-custom divider-light">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<!-- About Section Content-->
-			<div class="row">
-				<div class="col-lg-4 ms-auto">
-					<p class="lead">.</p>
-				</div>
-				<div class="col-lg-4 me-auto">
-					<p class="lead"></p>
-				</div>
-			</div>
-			<!-- About Section Button-->
-			<div class="text-center mt-4">
-				<a class="btn btn-xl btn-outline-light"
-					href="ajouter.jsp"> <i
-					class="fas fa-download me-2"></i> Ajouter
-				</a>
-			</div>
-		</div>
-	</section>
+		
 	<!-- Contact Section-->
 	<section class="page-section" id="contact">
 		<div class="container">

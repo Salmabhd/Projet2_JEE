@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ModifierProjetServlet", urlPatterns = {"/modifierProjet"})
+@WebServlet(name = "ProjetModificationServlet", urlPatterns = {"/modifierProjet"})
 public class ProjetModificationServlet extends HttpServlet {
         private ProjetDAO projetDao;
 
@@ -34,7 +34,7 @@ public class ProjetModificationServlet extends HttpServlet {
     // Vérifier si le projet existe
     if (projet == null) {
         // Si le projet n'est pas trouvé, rediriger ou afficher un message d'erreur approprié
-        response.sendRedirect("projetNonTrouve.jsp");
+        response.sendRedirect("");
         return;
     }
 

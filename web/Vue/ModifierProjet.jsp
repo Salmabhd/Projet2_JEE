@@ -5,8 +5,13 @@
 <%@page import="java.sql.*" %> 
 <% Class.forName("com.mysql.jdbc.Driver"); %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ajouterProjet.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Modifier Projet</title>   
         <link rel="stylesheet" href="css/ajouterProjet.css">
     </head>
     <body>
@@ -16,7 +21,7 @@
   <div class="formbold-form-wrapper">
       <h1>Modifier Projet</h1>
    
-    <% Projet projet = (Projet) request.getAttribute("projet"); %>
+    <c:forEach item="${projets}" var="projet" >
     
     <form action="../ModifierProjet" method="post">
     <center><!-- comment -->
@@ -26,7 +31,7 @@
     
         <div class="formbold-mb-5">
         <label for="nom" class="formbold-form-label">ID du Projet: </label>
-         <input type="text" name="projet_id" value="<%= projet.getProjet_id() %>">
+         <input type="text" name="projet_id" value="${projet.projet_id}">
       </div>
         
                
@@ -35,7 +40,7 @@
         <label for="nom" class="formbold-form-label">Nom du Projet: </label>
         <input
           type="text"
-          id="project_name" name="project_name" value="<%= projet.getProject_name() %>"
+          id="project_name" name="project_name" value="${projet.project_name}"
           class="formbold-form-input"
         />
       </div>
@@ -45,7 +50,7 @@
             <label for="dateD" class="formbold-form-label"> Date de Debut: </label>
             <input
               type="date"
-              id="date_debut" name="date_debut" value="<%= projet.getDateDebut() %>"
+              id="date_debut" name="date_debut" value="${projet.date_debut}"
               class="formbold-form-input"
             />
           </div>
@@ -55,7 +60,7 @@
             <label for="dateF" class="formbold-form-label"> Date de Fin: </label>
             <input
               type="date"
-              id="date_fin" name="date_fin" value="<%= projet.getDateFin() %>
+              id="date_fin" name="date_fin" value="${projet.date_fin}"
               class="formbold-form-input"
             />
           </div>
@@ -66,7 +71,7 @@
         <label for="membres_equipe" class="formbold-form-label"> Membres de l'Equipe: </label>
         <input
           type="text"
-          id="membres_equipe" name="membres_equipe" value="<%= projet.getMembresEquipe() %>"
+          id="membres_equipe" name="membres_equipe" value="${projet.membres_equipe}"
           class="formbold-form-input"
         />
       </div>
@@ -87,7 +92,7 @@
             <label for="project_manager_id" class="formbold-form-label"> ID chef du projet: </label>
             <input
               type="number"
-              id="project_manager_id" name="project_manager_id" value="<%= projet.getProject_manager_id() %>
+              id="project_manager_id" name="project_manager_id" value="${projet.project_manager_id}"
               class="formbold-form-input"
             />
           </div>

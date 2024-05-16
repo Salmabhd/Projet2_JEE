@@ -71,7 +71,7 @@
                                                 <th>Date de fin</th>
 						<th>Membres d'equipe</th>
 						<th>etat</th>
-                                                <th>chet de projet</th>
+                                                <th>chef de projet</th>
 						<th>Actions</th>
 					</tr>
 				</thead>

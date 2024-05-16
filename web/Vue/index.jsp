@@ -118,10 +118,9 @@
             <td>
             <td>
             <form method="post" action="ProjetControllerServlet">
-                <input type="hidden" name="projet_id" value="${projet.projet_id}" />
-                <button type="submit" name="action" value="modifier" class="btn btn-primary">Modifier</button>
-                <button type="submit" name="action" value="supprimer" class="btn btn-danger">Supprimer</button>
-            </form>
+                <a href="ModifierProjet.jsp?id=${projet_id}">modifier</a>
+                <a href="supprimerProjet?id=${projet_id}">modifier</a>
+              </form>
             </td>
             </tr>
     </c:forEach>

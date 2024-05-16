@@ -10,7 +10,7 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="formbold-form-wrapper">
-<form action="<%= request.getContextPath() %>/AjoutProjet" method="post">
+<form action="../AjoutProjet" method="post">
     <center><!-- comment -->
     <label class="formbold-form-label formbold-form-label-2">
             <h4> Creer un nouveau projet<!-- comment --></h4>

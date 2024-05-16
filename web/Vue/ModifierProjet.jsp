@@ -18,7 +18,7 @@
    
     <% Projet projet = (Projet) request.getAttribute("projet"); %>
     
-    <form action="ProjetModificationServlet" method="post">
+    <form action="../ModifierProjet" method="post">
     <center><!-- comment -->
     <label class="formbold-form-label formbold-form-label-2">
             <h4> Creer un nouveau projet<!-- comment --></h4>

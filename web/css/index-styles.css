@@ -34,14 +34,14 @@
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
   --bs-primary: #1abc9c;
-  --bs-secondary: #2c3e50;
+  --bs-secondary: #1da0f2;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 26, 188, 156;
+  --bs-primary-rgb:29, 160, 242;
   --bs-secondary-rgb: 44, 62, 80;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -149,6 +149,10 @@ h5, .h5 {
   font-size: 1.25rem;
 }
 
+#logo{
+    
+   
+}
 h6, .h6 {
   font-size: 1rem;
 }
@@ -3061,8 +3065,8 @@ textarea.form-control-lg {
 
 .btn-secondary {
   color: #fff;
-  background-color: #2c3e50;
-  border-color: #2c3e50;
+  background-color: #1da0f2;
+  border-color: #1da0f2;
 }
 .btn-secondary:hover {
   color: #fff;
@@ -3085,8 +3089,8 @@ textarea.form-control-lg {
 }
 .btn-secondary:disabled, .btn-secondary.disabled {
   color: #fff;
-  background-color: #2c3e50;
-  border-color: #2c3e50;
+  background-color: #1da0f2;
+  border-color: #1da0f2;
 }
 
 .btn-success {
@@ -3295,27 +3299,27 @@ textarea.form-control-lg {
 }
 
 .btn-outline-secondary {
-  color: #2c3e50;
-  border-color: #2c3e50;
+  color: #1da0f2;
+  border-color: #1da0f2;
 }
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #2c3e50;
-  border-color: #2c3e50;
+  background-color: #1da0f2;
+  border-color: #1da0f2;
 }
 .btn-check:focus + .btn-outline-secondary, .btn-outline-secondary:focus {
   box-shadow: 0 0 0 0.25rem rgba(44, 62, 80, 0.5);
 }
 .btn-check:checked + .btn-outline-secondary, .btn-check:active + .btn-outline-secondary, .btn-outline-secondary:active, .btn-outline-secondary.active, .btn-outline-secondary.dropdown-toggle.show {
   color: #fff;
-  background-color: #2c3e50;
-  border-color: #2c3e50;
+  background-color: #1da0f2;
+  border-color: #1da0f2;
 }
 .btn-check:checked + .btn-outline-secondary:focus, .btn-check:active + .btn-outline-secondary:focus, .btn-outline-secondary:active:focus, .btn-outline-secondary.active:focus, .btn-outline-secondary.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(44, 62, 80, 0.5);
 }
 .btn-outline-secondary:disabled, .btn-outline-secondary.disabled {
-  color: #2c3e50;
+  color: #1da0f2;
   background-color: transparent;
 }
 
@@ -5555,6 +5559,47 @@ textarea.form-control-lg {
 .modal-backdrop.show {
   opacity: 0.5;
 }
+/* Style du tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style des actions (boutons Modifier et Supprimer) */
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #4CAF50; /* Couleur verte */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.actions a:hover {
+    background-color: #45a049; /* Couleur verte foncée au survol */
+}
+
 
 .modal-header {
   display: flex;
@@ -5973,7 +6018,7 @@ textarea.form-control-lg {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
   font-size: 1rem;
-  background-color: #f0f0f0;
+  background-color: #1da0f2;
   border-bottom: 0.125rem solid rgba(0, 0, 0, 0.2);
   border-top-left-radius: 0.625rem;
   border-top-right-radius: 0.625rem;
@@ -6441,7 +6486,7 @@ textarea.form-control-lg {
 }
 
 .link-secondary {
-  color: #2c3e50;
+  color: #1da0f2;
 }
 .link-secondary:hover, .link-secondary:focus {
   color: #233240;
@@ -6891,7 +6936,7 @@ textarea.form-control-lg {
 }
 
 .border-secondary {
-  border-color: #2c3e50 !important;
+  border-color: #1da0f2 !important;
 }
 
 .border-success {
@@ -11317,9 +11362,9 @@ html {
   width: 100%;
   max-width: 7rem;
   height: 0.25rem;
-  background-color: #2c3e50;
+  background-color: #1da0f2;
   border-radius: 1rem;
-  border-color: #2c3e50;
+  border-color: #1da0f2;
 }
 .divider-custom .divider-custom-line:first-child {
   margin-right: 1rem;
@@ -11328,7 +11373,7 @@ html {
   margin-left: 1rem;
 }
 .divider-custom .divider-custom-icon {
-  color: #2c3e50;
+  color: #1da0f2;
   font-size: 2rem;
 }
 .divider-custom.divider-light .divider-custom-line {
@@ -11500,7 +11545,7 @@ html {
 .footer {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: #2c3e50;
+  background-color: #1da0f2;
   color: #fff;
 }
 

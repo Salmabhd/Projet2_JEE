@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         if (loginController.authenticate(username, password)) {
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         } else {
             response.sendRedirect("Vue/login.jsp");
         }

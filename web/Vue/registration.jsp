@@ -29,45 +29,43 @@
 							<div class="form-group">
 								<label for="name"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="name" id="name" placeholder="Your Name" />
+									type="text" name="name" id="name" placeholder="Nom" />
 							</div>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-									type="email" name="email" id="email" placeholder="Your Email" />
+									type="email" name="email" id="email" placeholder=" Email" />
 							</div>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
-									type="password" name="pass" id="pass" placeholder="Password" />
+									type="password" name="pass" id="pass" placeholder="Mot de passe" />
 							</div>
 							<div class="form-group">
 								<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 								<input type="password" name="re_pass" id="re_pass"
-									placeholder="Repeat your password" />
+									placeholder="confirmer votre mot de passe" />
 							</div>
 							<div class="form-group">
 								<label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
 								<input type="text" name="contact" id="contact"
-									placeholder="Contact no" />
+									placeholder="Matricule" />
 							</div>
 							<div class="form-group">
 								<input type="checkbox" name="agree-term" id="agree-term"
 									class="agree-term" /> <label for="agree-term"
-									class="label-agree-term"><span><span></span></span>I
-									agree all statements in <a href="#" class="term-service">Terms
-										of service</a></label>
+									class="label-agree-term"><span><span></span></span> j'accepte tous les regles  <a href="#" class="term-service">
+										</a></label>
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signup" id="signup"
-									class="form-submit" value="Register" />
+									class="form-submit" value="S'inscrire" />
 							</div>
 						</form>
 					</div>
 					<div class="signup-image">
 						<figure>
-							<img src="images/signup-image.jpg" alt="sing up image">
+							<img src="../images/logo1.jpeg" alt="sing up image">
 						</figure>
-						<a href="login.jsp" class="signup-image-link">I am already
-							member</a>
+						<a href="login.jsp" class="signup-image-link">j'ai deja un compte</a>
 					</div>
 				</div>
 			</div>

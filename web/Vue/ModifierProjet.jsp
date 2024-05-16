@@ -15,7 +15,7 @@
   <!-- Learn More: https://formbold.com -->
   <div class="formbold-form-wrapper">
       <h1>Modifier Projet</h1>
-    <%-- Afficher les détails du projet --%>
+   
     <% Projet projet = (Projet) request.getAttribute("projet"); %>
     
     <form action="ProjetModificationServlet" method="post">

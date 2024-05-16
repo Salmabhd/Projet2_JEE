@@ -45,8 +45,10 @@
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Ajouter</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Profile</a></li>
+                                                <li class="nav-item mx-0 mx-lg-1"><a
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="">Diconnecter</a></li>
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="Vue/login.jsp"> <img src="images/logout.png" alt="Edit" data-toggle="tooltip" title="deconnecter"></a></li>
 					
 				</ul>
 			</div>
@@ -56,10 +58,10 @@
 	<header class="masthead bg-primary text-white text-center">
 		<div class="container d-flex align-items-center flex-column">
 			<!-- Masthead Avatar Image-->
-			<img class="masthead-avatar mb-5" src="assets/img/avataaars.svg"
+			<img id="logo" class="masthead-avatar mb-5" src="images/logo.jpeg"
 				alt="..." />
 			<!-- Masthead Heading-->
-			<h1 class="masthead-heading text-uppercase mb-0">Bienvenue dans Digital Projet</h1>
+			<h6 class="masthead-heading text-uppercase mb-0">Bienvenue dans Digital Projet</h6>
 			<!-- Icon Divider-->
 			<div class="divider-custom divider-light">
 				<div class="divider-custom-line"></div>
@@ -69,16 +71,124 @@
 				<div class="divider-custom-line"></div>
 			</div>
 			<!-- Masthead Subheading-->
-			<p class="masthead-subheading font-weight-light mb-0">Java
-				Development - Web Development - Python</p>
+			<p class="masthead-subheading font-weight-light mb-0">
+				</p>
 		</div>
 	</header>
-	<!-- Portfolio Section-->
+	<!--  Section-->
 	
-      
+         <section class="page-section portfolio" id="portfolio">
+		<div class="container">
+			<!-- Portfolio Section Heading-->
+			<h2
+				class="page-section-heading text-center text-uppercase text-secondary mb-0">Liste des projets</h2>
+			<!-- Icon Divider-->
+			<div class="divider-custom">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="divider-custom-line"></div>
+			</div>
+			<!-- Portfolio Grid Items-->
+			<div class="row justify-content-center">
+				 <table>
+				<thead>
+					<tr>
+			                        <th>ID de projet</th>
+						<th>Nom du projet</th>
+						<th>Date de debut</th>
+                                                <th>Date de fin</th>
+						<th>Membres d'equipe</th>
+						<th>etat</th>
+                                                <th>chet de projet</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+                                     <c:forEach items="${PROJET_LIST}" var="projet">
+            <tr>
+            <td>${projet.projet_id}</td>
+            <td>${projet.project_name}</td>
+            <td>${projet.DateDebut}</td>
+            <td>${projet.DateFin}</td>
+            <td>${projet.MembresEquipe}</td>
+            <td>${projet.etat}</td>
+            <td>${projet.project_manager_id}</td>
+            <td>
+            <td>
+            <form method="post" action="ProjetControllerServlet">
+                <input type="hidden" name="projet_id" value="${projet.projet_id}" />
+                <button type="submit" name="action" value="modifier" class="btn btn-primary">Modifier</button>
+                <button type="submit" name="action" value="supprimer" class="btn btn-danger">Supprimer</button>
+            </form>
+            </td>
+            </tr>
+    </c:forEach>
+				</tbody>
+			</table>
+				
+			</div>
+		</div>
+	</section>
+        
+       
         
         
-		
+        
+        
+        
+        
+        
+        							<!--<a href="exporter.jsp" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+        							<!--<a href="importer.jsp" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+	<!-- About Section-->
+	<section class="page-section bg-primary text-white mb-0" id="about">
+		<div class="container">
+			<!-- About Section Heading-->
+			<h2
+				class="page-section-heading text-center text-uppercase text-white">Ajouter un projet</h2>
+			<!-- Icon Divider-->
+			<div class="divider-custom divider-light">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="divider-custom-line"></div>
+			</div>
+			<!-- About Section Content-->
+			<div class="row">
+				<div class="col-lg-4 ms-auto">
+					<p class="lead">.</p>
+				</div>
+				<div class="col-lg-4 me-auto">
+					<p class="lead"></p>
+				</div>
+			</div>
+			<!-- About Section Button-->
+			<div class="text-center mt-4">
+				<a class="btn btn-xl btn-outline-light"
+					href="ajouter.jsp"> <i
+					class="fas fa-download me-2"></i> Ajouter
+				</a>
+			</div>
+		</div>
+	</section>
 	<!-- Contact Section-->
 	<section class="page-section" id="contact">
 		<div class="container">
@@ -109,9 +219,9 @@
 						<div class="form-floating mb-3">
 							<input class="form-control" id="name" type="text"
 								placeholder="Enter your name..." data-sb-validations="required" />
-							<label for="name">Full name</label>
+							<label for="name">nom complet</label>
 							<div class="invalid-feedback" data-sb-feedback="name:required">A
-								name is required.</div>
+								name obligatoire.</div>
 						</div>
 						<!-- Email address input-->
 						<div class="form-floating mb-3">
@@ -119,18 +229,18 @@
 								placeholder="name@example.com"
 								data-sb-validations="required,email" /> <label for="email">Email
 								address</label>
-							<div class="invalid-feedback" data-sb-feedback="email:required">An
-								email is required.</div>
+							<div class="invalid-feedback" data-sb-feedback="email:required">
+								email obligatoire.</div>
 							<div class="invalid-feedback" data-sb-feedback="email:email">Email
-								is not valid.</div>
+								n'es pas valide.</div>
 						</div>
 						<!-- Phone number input-->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="phone" type="tel"
 								placeholder="(123) 456-7890" data-sb-validations="required" />
-							<label for="phone">Phone number</label>
+							<label for="phone">numero</label>
 							<div class="invalid-feedback" data-sb-feedback="phone:required">A
-								phone number is required.</div>
+								numero obligatoire.</div>
 						</div>
 						<!-- Message input-->
 						<div class="form-floating mb-3">
@@ -138,8 +248,8 @@
 								placeholder="Enter your message here..." style="height: 10rem"
 								data-sb-validations="required"></textarea>
 							<label for="message">Message</label>
-							<div class="invalid-feedback" data-sb-feedback="message:required">A
-								message is required.</div>
+							<div class="invalid-feedback" data-sb-feedback="message:required">
+								message obligatoire.</div>
 						</div>
 						<!-- Submit success message-->
 						<!---->
@@ -147,8 +257,8 @@
 						<!-- has successfully submitted-->
 						<div class="d-none" id="submitSuccessMessage">
 							<div class="text-center mb-3">
-								<div class="fw-bolder">Form submission successful!</div>
-								To activate this form, sign up at <br /> <a
+								<div class="fw-bolder">Forme envoye avec succes!</div>
+								pour activer cette formulaire , veuillez se connecter <br /> <a
 									href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
 							</div>
 						</div>
@@ -157,12 +267,11 @@
 						<!-- This is what your users will see when there is-->
 						<!-- an error submitting the form-->
 						<div class="d-none" id="submitErrorMessage">
-							<div class="text-center text-danger mb-3">Error sending
-								message!</div>
+							<div class="text-center text-danger mb-3">erreur!</div>
 						</div>
 						<!-- Submit Button-->
 						<button class="btn btn-primary btn-xl disabled" id="submitButton"
-							type="submit">Send</button>
+							type="submit">Envoyer</button>
 					</form>
 				</div>
 			</div>
